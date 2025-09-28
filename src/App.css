@@ -5,6 +5,18 @@
   position: relative;
 }
 
+ul{
+  height: 50px;
+  overflow: hidden;
+  background-color: black;
+}
+
+ul:hover{
+  height: 200px;
+  overflow: scroll;
+  background-color: white;
+}
+
 .overAllStyle{
   display: grid;
   grid-template-columns: 50% 50%;
@@ -27,6 +39,15 @@
 .borderFOrButt:hover{
   cursor: pointer;
   background-color: bisque;
+}
+
+.fixedIn{
+  position: absolute;
+  right: 50px;
+  top: 50px;
+}
+footer{
+  margin: 50px;
 }
 
 /* #root {

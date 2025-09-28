@@ -99,10 +99,10 @@ export default function VotingProcess(){
                             <input placeholder="yyyy-mm-dd" onChange={e=>changePostValue(e.target.value, i, 'Vote date')} value={va["Vote date"]} required></input>
                         </label>
                         <div>
-                            <label>
+                            {/* <label>
                                 Vote
                                 <input onChange={e=>changePostValue(e.target.value, i, 'Vote')} value={va["Vote"]} required></input>
-                            </label>
+                            </label> */}
                             <label>
                                 Vote summary
                                 <input onChange={e=>changePostValue(e.target.value, i, 'Vote summary')} value={va["Vote summary"]} required></input>

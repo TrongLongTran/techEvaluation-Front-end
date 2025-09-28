@@ -63,6 +63,7 @@ export default function IllustrateChart(){
                         <br/>
                     From <b>{analyze["date_range"]["earliest"]}</b> to <b>{analyze["date_range"]["latest"]}</b>
                     </p>
+                    <footer></footer>
                 </div>
             ):("")
         }

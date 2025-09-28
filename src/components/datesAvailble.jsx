@@ -25,14 +25,13 @@ export default function AllFilteredPosts(){
         findResult(pageChange)
     }
 
-    let findAll = async (e)=>{
-        changeDate(e.target.value)
+    useEffect(()=>{
         //this will get all time and make it into a suggestion search
-        await fetch(`http://localhost:8000/getCandidates/allTimeLine`)
+        fetch(`http://localhost:8000/getCandidates/allTimeLine`)
         .then(data=>data.json())
         .then(addInAll=>changeAllDates(addInAll))
-        .catch(err=>{alert("Something is wrong"), changeAllDates(err)})
-    }   
+        .catch(err=>{setError(err), changeAllDates([])})
+    }, [allDates])
 
     const findResult = async (page)=>{
         try{
@@ -45,7 +44,7 @@ export default function AllFilteredPosts(){
                 testSet([])
                 setError(changeRes.error);
             }else{
-                if(changeRes.length==0){changePage(page-1); return}; 
+                if(changeRes.length==0){return changePage(page-1)}
                 testSet(changeRes)
                 setError("")
             }
@@ -59,7 +58,7 @@ export default function AllFilteredPosts(){
         <div>
             <NavBar />
             <div>
-                <input type="text" onChange={findAll} value={typingDate} placeholder="Type somethign here"></input>
+                <input type="text" onChange={e=>changeDate(e.target.value)} value={typingDate} placeholder="Type somethign here"></input>
                 <button onClick={()=>{findResult(1), changePage(1)}}>Search</button>
             </div>
             <p>{error}</p>
@@ -95,7 +94,7 @@ export default function AllFilteredPosts(){
                             </div>
                         </div>
                     ))}
-                    <div>
+                    <div className="fixedIn">
                         <p>{page}</p>
                         <button onClick={changePagePrev}>Previous</button>
                         <button onClick={changePageFront}>Continue</button>

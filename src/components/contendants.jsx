@@ -51,7 +51,14 @@ export default function AllContenders(){
                         <p><b>Summary:</b> {content["Vote summary"]}</p>
                     </div>
                     <div>
-                        <p>{content["Vote"]}</p>
+                        <p><b>Hover to see countries results</b></p>
+                        <ul>
+                            {Object.entries(content["Vote"]).map(([country, choice])=>(
+                                <li key={country}>
+                                    {country}: {choice || "No choice"}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             ))}
