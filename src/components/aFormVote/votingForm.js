@@ -8,7 +8,6 @@ let baseSubmission = {
     "Note": "",
     "Vote summary": "",
     "Vote date": "",
-    "Vote": "",
     "Collections": "",
     "Committee report": "",
 }
