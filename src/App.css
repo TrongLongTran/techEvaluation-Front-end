@@ -2,11 +2,31 @@
   border: 2px solid black;
   margin: 20px;
   display: inline-block;
+  position: relative;
 }
 
 .overAllStyle{
   display: grid;
   grid-template-columns: 50% 50%;
+}
+
+.formAdd{
+  margin: 20px;
+  border: 2px solid black;
+}
+.formAdd label{
+  display: block;
+}
+
+.borderFOrButt{
+  border: 2px solid black;
+  width: 20%;
+  text-align: center;
+  margin: 10px;
+}
+.borderFOrButt:hover{
+  cursor: pointer;
+  background-color: bisque;
 }
 
 /* #root {

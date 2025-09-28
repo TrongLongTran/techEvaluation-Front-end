@@ -4,11 +4,13 @@ export default function NavBar(){
     return(
         <nav className = 'navbar'>
             <>
-            <Link to="/" className='nav-link'>Home</Link>
+            <Link to="/" className='nav-link'>Result</Link>
             <br/>
             <Link to='/findHist' className='nav-link'>History</Link>
-            {/* <br/>
-            <Link to='/newUser' className='nav-link'>Signup</Link> */}
+            <br/>
+            <Link to='/summary' className='nav-link'>Summary</Link>
+            <br/>
+            <Link to='/voting' className='nav-link'>Vote here!!</Link>
             </>
         </nav>
     )

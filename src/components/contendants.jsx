@@ -7,7 +7,6 @@ export default function AllContenders(){
     const [page, changePage] = useState(1)
     const [limit, changeLimit] = useState(10)
     const [test, testSet] = useState([])
-    const [failing, setFail] = useState(false)
     const [failReason, setFailReason] = useState("")
 
     useEffect(()=>{
@@ -17,9 +16,11 @@ export default function AllContenders(){
             testSet([])
             let contentWait = await fetch(`http://localhost:8000/getCandidates/isealDTB?page=${page}&limit=${limit}`)
             let fetchJson = await contentWait.json();
-            console.log(fetchJson[0]["Draft resolution"])
-            testSet(fetchJson)
-        }catch(err){console.log(err), setFail(true), setFailReason(err)}
+            if(contentWait.ok)
+                testSet(fetchJson)
+            else
+                setFailReason(fetchJson.error)
+        }catch(err){console.log(err), setFailReason("Something is wrong")}
         }
         getAllContendee()
     }, [page, limit])
@@ -34,11 +35,10 @@ export default function AllContenders(){
     }
     if(test.length==0)
         return(<p>Loading</p>)
-    if(failing)
-        return(<p>Failed: {failReason}</p>)
     return(
         <div>
             <NavBar />
+            <p>{failReason}</p>
             <div className="overAllStyle">
             {test.map((content)=>(
                 <div key={content.id} className="contentName">
@@ -49,6 +49,9 @@ export default function AllContenders(){
                         <p><b>Agenda:</b> {content["Agenda"]}</p>
                         <p><b>Resolution:</b> {content["Resolution"]}</p>
                         <p><b>Summary:</b> {content["Vote summary"]}</p>
+                    </div>
+                    <div>
+                        <p>{content["Vote"]}</p>
                     </div>
                 </div>
             ))}

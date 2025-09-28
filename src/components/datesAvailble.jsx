@@ -10,6 +10,7 @@ export default function AllFilteredPosts(){
     const [page, changePage] = useState(1)
     const [limit, changeLimit] = useState(10)
     const [test, testSet] = useState([])
+    const [error, setError] = useState("")
 
     function changePagePrev(){
         if(page == 1)
@@ -38,14 +39,19 @@ export default function AllFilteredPosts(){
             
             //this will allow filter 
             let contentWait = await fetch(`http://localhost:8000/getCandidates/historiesVotes?page=${page}&limit=${limit}&days=${typingDate}`)
-            .then(resu=>{
-                if(!resu.ok){
-                    throw new Error(`HTTP error! status: ${resu.status}`);
-                }
-                return resu.json()
-            })
-            .then(fetchJson=>{if(fetchJson.length==0){changePage(page-1); return}; testSet(fetchJson)})
-            .catch(err=>(console.log(err), testSet([])))
+            let changeRes = await contentWait.json()
+            changeAllDates([])
+            if(!contentWait.ok){
+                testSet([])
+                setError(changeRes.error);
+            }else{
+                if(changeRes.length==0){changePage(page-1); return}; 
+                testSet(changeRes)
+                setError("")
+            }
+            // return resu.json()
+            // .then(fetchJson=>{if(fetchJson.length==0){changePage(page-1); return}; testSet(fetchJson)})
+            // .catch(err=>(console.log(err), testSet([])))
         }catch(err){alert(err), testSet([])}
     }
 
@@ -56,6 +62,7 @@ export default function AllFilteredPosts(){
                 <input type="text" onChange={findAll} value={typingDate} placeholder="Type somethign here"></input>
                 <button onClick={()=>{findResult(1), changePage(1)}}>Search</button>
             </div>
+            <p>{error}</p>
             <div>
                 {
                 //true then filter
@@ -63,8 +70,8 @@ export default function AllFilteredPosts(){
                 typingDate.length!=0 && allDates.filter(item => item['Vote date'].startsWith(typingDate) && data['Vote date'] != typingDate)
                 .map(data=>(
                     previousDate!=data['Vote date']?(
-                        <div className="findItems" key={data.id} onClick={()=>changeDate(data['Vote date'])}>
-                            <p hidden>{previousDate=data['Vote date']}</p>
+                        <div className="findItems" key={data._id} onClick={()=>{changeDate(data['Vote date']), testSet([]), setError("")}}>
+                            {/* <p>{previousDate=data['Vote date']}</p> */}
                             {data['Vote date']}
                         </div>
                     ):("")
