@@ -12,6 +12,8 @@ export default function AllFilteredPosts(){
     const [test, testSet] = useState([])
     const [error, setError] = useState("")
 
+    let count = 0;
+
     function changePagePrev(){
         if(page == 1)
             return
@@ -31,7 +33,7 @@ export default function AllFilteredPosts(){
         .then(data=>data.json())
         .then(addInAll=>changeAllDates(addInAll))
         .catch(err=>{setError(err), changeAllDates([])})
-    }, [allDates])
+    }, [])
 
     const findResult = async (page)=>{
         try{
@@ -83,12 +85,12 @@ export default function AllFilteredPosts(){
                 (test.length!=0)?
                     (<>
                         {test.map((content)=>(
-                        <div key={content.id} className="contentName">
+                        <div key={count} className="contentName">
                             <h3>{content["Title"]}</h3>
                             <p>{content["Vote date"]}</p>
                             <div className="moreInfo">
                                 <hr></hr>
-                                <p><b>Agenda:</b> {content["Agenda"]}</p>
+                                <p><b>Agenda:</b> {count=count+1} {content["Agenda"]}</p>
                                 <p><b>Resolution:</b> {content["Resolution"]}</p>
                                 <p><b>Summary:</b> {content["Vote summary"]}</p>
                             </div>

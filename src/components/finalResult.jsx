@@ -40,8 +40,7 @@ export default function VotingProcess(){
             }
         }catch(err){
             setLoad(false)
-            let getErr = await res.json()
-            seError(getErr.error)
+            seError(err)
         }
     }
 
@@ -88,7 +87,7 @@ export default function VotingProcess(){
                         </label>
                         <label>
                             ID
-                            <input placeholder="anything < 2 million and > 0" onChange={e=>changePostValue(e.target.value, i, 'id')} value={va["id"]} required></input>
+                            <input placeholder="anything < 20 million and > 0" onChange={e=>changePostValue(e.target.value, i, 'id')} value={va["id"]} required></input>
                         </label>
                         <label>
                             Agenda
