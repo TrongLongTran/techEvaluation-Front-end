@@ -3,6 +3,7 @@
   margin: 20px;
   display: inline-block;
   position: relative;
+  font-size: medium;
 }
 
 ul{
@@ -48,6 +49,30 @@ ul:hover{
 }
 footer{
   margin: 50px;
+}
+
+@media only screen and (max-width: 600px){
+  .contentName{
+  border: 2px solid black;
+  display: inline-block;
+  position: relative;
+  font-size: 10px;
+}
+.fixedIn{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+}
+
+@media only screen and (max-width: 1680px){
+  .contentName{
+  border: 2px solid black;
+  display: inline-block;
+  position: relative;
+  font-size: 15px;
+  margin: 5px;
+}
 }
 
 /* #root {

@@ -65,7 +65,7 @@ export default function AllFilteredPosts(){
             <div>
                 {
                 //true then filter
-                //&& data['Vote date'] != typingDate not working properly
+                //&& data['Vote date'] != typingDate not working properly and some dates repeating
                 typingDate.length!=0 && allDates.filter(item => item['Vote date'].startsWith(typingDate) && data['Vote date'] != typingDate)
                 .map(data=>(
                     previousDate!=data['Vote date']?(
