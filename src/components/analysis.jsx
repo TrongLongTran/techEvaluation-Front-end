@@ -3,14 +3,17 @@ import { useEffect, useState } from "react"
 import NavBar from "./navBar";
 
 export default function IllustrateChart(){
+    //load state
     const [theChart, setChart] = useState(null)
+    //result
     const [analyze, changeData] = useState(null)
+    //error
     const [error, setError] = useState("")
     useEffect(()=>{
         let dataSet = {}
         const getAllContendee = async ()=>{
             try{
-                //getCandidates/isealDTB get all normally
+                //getCandidates/testOne get all information about votes (yes, no, abstain)
                 let contentWait = await fetch(`http://localhost:8000/getTotalRes/testOne`)
                 let fetchJson = await contentWait.json();
                 //create data for the chart

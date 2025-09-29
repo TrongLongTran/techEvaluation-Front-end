@@ -46,13 +46,11 @@ export default function AllFilteredPosts(){
                 testSet([])
                 setError(changeRes.error);
             }else{
+                //preventing page from go too far (bugged)
                 if(changeRes.length==0){return changePage(page-1)}
                 testSet(changeRes)
                 setError("")
             }
-            // return resu.json()
-            // .then(fetchJson=>{if(fetchJson.length==0){changePage(page-1); return}; testSet(fetchJson)})
-            // .catch(err=>(console.log(err), testSet([])))
         }catch(err){alert(err), testSet([])}
     }
 
@@ -72,7 +70,6 @@ export default function AllFilteredPosts(){
                 .map(data=>(
                     previousDate!=data['Vote date']?(
                         <div className="findItems" key={data._id} onClick={()=>{changeDate(data['Vote date']), testSet([]), setError("")}}>
-                            {/* <p>{previousDate=data['Vote date']}</p> */}
                             {data['Vote date']}
                         </div>
                     ):("")
@@ -82,6 +79,7 @@ export default function AllFilteredPosts(){
             <div className="overAllStyle">
             {
                 //Comma discarded the map
+            //will run after press search
                 (test.length!=0)?
                     (<>
                         {test.map((content)=>(

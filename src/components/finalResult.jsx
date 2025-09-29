@@ -79,6 +79,7 @@ export default function VotingProcess(){
             )}
             {
                 allValues.map((va, i)=>(
+                    //every inforamtion about the participant, except for Vote
                     <div className="formAdd" key={i}>
                         <div className="borderFOrButt" onClick={()=>(removeaForm(i))}>Delete this data</div>
                         <label>

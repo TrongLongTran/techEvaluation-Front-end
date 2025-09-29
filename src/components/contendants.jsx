@@ -12,7 +12,7 @@ export default function AllContenders(){
     useEffect(()=>{
     const getAllContendee = async ()=>{
         try{
-            //getCandidates/isealDTB get all normally
+            //getCandidates/isealDTB get all normally with page and limit to paginating
             testSet([])
             let contentWait = await fetch(`http://localhost:8000/getCandidates/isealDTB?page=${page}&limit=${limit}`)
             let fetchJson = await contentWait.json();
@@ -25,11 +25,13 @@ export default function AllContenders(){
         getAllContendee()
     }, [page, limit])
 
+    //prevent page to be <0
     function changePagePrev(){
         if(page == 1)
             return
         changePage(page-1)
     }
+    //get page to go up
     function changePageFront(){
         changePage(page+1)
     }
