@@ -34,14 +34,24 @@ This is a full-stack web-based voting application dashboard. Users can submit vo
 - `aFormVote` -> default json data to use in the post vote
 - `chartMaker` -> create bar chart
 
+### Mock Data
+- `aFormVote` contains default JSON votes used for testing the dashboard.
+- Frontend reads this file to simulate vote submissions and chart updates.
+
 ### Frontend
 1. Install dependencies: ```npm install```
 2. Build the application's front-end: ```npm run build```
 3. Run the app: ```npm run dev```
 
 
-## Front-end Endpoints
+### Frontend Routes
+- `/` → Dashboard showing all vote results
+- `/findHist` → Historical votes 2001-2023
+- `/summary` → Bar chart with backend-provided info
+- `/voting` → Vote submission page using `aFormVote` mock data
 
-- `/` → see all the results throughout each years. Have all information of votes result from each countries
-- `GET /votes/stats` → get aggregated results (counts, percentages)
-- `GET /votes/:candidateId` → get votes per candidate
+### Features
+- Responsive dashboard (desktop, tablet, mobile)
+- Interactive charts (bar)
+- Voting form with success/error/loading feedback
+- Navigation simulation across multiple pages
