@@ -26,7 +26,7 @@ This is a full-stack web-based voting application dashboard. Users can submit vo
 - Backend: Node.js + Express (Also contained in the email)
 - Database: MongoDB
 
-## Folder structure
+# Folder structure
 - `votingSystem` -> front-end
 - `package.json` -> frontend dependencies and scripts
 - `src` -> contain alll components, front-end root file and css
@@ -34,30 +34,30 @@ This is a full-stack web-based voting application dashboard. Users can submit vo
 - `aFormVote` -> default json data to use in the post vote
 - `chartMaker` -> create bar chart
 
-### Mock Data
+# Mock Data
 - `aFormVote` contains default JSON votes used for testing the dashboard.
 - Frontend reads this file to simulate vote submissions and chart updates.
 
-### Frontend
+# Frontend
 1. Install dependencies: ```npm install```
 2. Build the application's front-end: ```npm run build```
 3. Run the app: ```npm run dev```
 
 
-### Frontend Routes
+# Frontend Routes
 - `/` → Dashboard showing all vote results
 - `/findHist` → Historical votes 2001-2023
 - `/summary` → Bar chart with backend-provided info
 - `/voting` → Vote submission page using `aFormVote` mock data
 
-### Features
+# Features
 - Responsive dashboard (desktop, tablet, mobile)
 - Interactive charts (bar)
 - Voting form with success/error/loading feedback
 - Navigation simulation across multiple pages
 - A search suggestion in history votes
 
-### Known bugs
+# Known bugs
 - Next button empty page: The pagination "Next" button can still be pressed even when there are no more results.
   Shorterm fix: Add error handling and hide the pagination controls when no data is available.
 - Data validation limited: Input is minimally validated; malformed requests may not return detailed error messages. Some error handler is repeating
