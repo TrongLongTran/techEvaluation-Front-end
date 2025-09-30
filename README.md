@@ -55,3 +55,14 @@ This is a full-stack web-based voting application dashboard. Users can submit vo
 - Interactive charts (bar)
 - Voting form with success/error/loading feedback
 - Navigation simulation across multiple pages
+- A search suggestion in history votes
+
+### Known bugs
+- Next button empty page: The pagination "Next" button can still be pressed even when there are no more results.
+  Shorterm fix: Add error handling and hide the pagination controls when no data is available.
+- Data validation limited: Input is minimally validated; malformed requests may not return detailed error messages. Some error handler is repeating
+- Many same suggestions:
+  - History's search bar dates can repeat a lot of same results
+  - Dates suggestion still appear after the user's choosen date is already there
+  It is still working properly
+- Error handler in history: is still not well constructed
